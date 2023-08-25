@@ -191,10 +191,11 @@ type BeaconBlock struct {
 
 // RegisterValidatorRequestMessage https://github.com/ethereum/beacon-APIs/blob/master/types/registration.yaml
 type RegisterValidatorRequestMessage struct {
-	FeeRecipient Address   `json:"fee_recipient" ssz-size:"20"` // type was Address
-	GasLimit     uint64    `json:"gas_limit,string"`
-	Timestamp    uint64    `json:"timestamp,string"`
-	Pubkey       PublicKey `json:"pubkey" ssz-size:"48"` // type was PublicKey
+	FeeRecipient       Address   `json:"fee_recipient" ssz-size:"20"` // type was Address
+	GasLimit           uint64    `json:"gas_limit,string"`
+	Timestamp          uint64    `json:"timestamp,string"`
+	Pubkey             PublicKey `json:"pubkey" ssz-size:"48"` // type was PublicKey
+	ProposerCommitment uint64    `json:"proposer_commitment,string"`
 }
 
 // SignedValidatorRegistration https://github.com/ethereum/beacon-APIs/blob/master/types/registration.yaml#L18

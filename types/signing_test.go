@@ -76,10 +76,11 @@ func BenchmarkSignatureVerification(b *testing.B) {
 
 func TestVerifySignatureManualPk(t *testing.T) {
 	msg2 := RegisterValidatorRequestMessage{
-		FeeRecipient: Address{0x42},
-		GasLimit:     15_000_000,
-		Timestamp:    1652369368,
-		Pubkey:       PublicKey{0x0d},
+		FeeRecipient:       Address{0x42},
+		GasLimit:           15_000_000,
+		Timestamp:          1652369368,
+		Pubkey:             PublicKey{0x0d},
+		ProposerCommitment: 0,
 	}
 	root2, err := msg2.HashTreeRoot()
 	require.NoError(t, err)
@@ -93,7 +94,7 @@ func TestVerifySignatureManualPk(t *testing.T) {
 	var signature2 Signature
 	err = signature2.FromSlice(sig2)
 	require.NoError(t, err)
-	require.Equal(t, "0x8e09a0ae7af113da2043001cc19fb1b3b24bbe022c1b8050ba2297ad1186f4217dd7095edad1d16d83d10f3297883d9e1674c81da95f10d3358c5afdb2500279e720b32879219c9a3b33415239bf46a66cd92b9d1750a6dd7cc7ec936a357128", signature2.String())
+	require.Equal(t, "0xb132745503f78ba0936f3a2e49a11edf9d66215c37111d71a5a1121b1630aa0229808120cc6726076262937135f555ad0701a201fc3eac8779f53028f333f414457f78ce596b26b8334512150f629c4b16853bcbad879321f3509ccb3a4ff1a1", signature2.String())
 }
 
 func bytesTo4(bytes []byte) (res [4]byte) {
